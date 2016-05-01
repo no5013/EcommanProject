@@ -14,15 +14,25 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var  order = {
+	var  newOrder = {
             cusName: req.body.cusName,
             shipCost: req.body.shipCost,
-            discount: req.body.discount,
-            itemcode1: req.body.itemcode1,
-            amount1: req.body.amount1
+            discount: req.body.discount
    }
 
-   console.log(order);
+   var orderId;
+   order.addOrderToShop( newO rder , function(result){
+   		orderId = result.insertId;
+   });
+
+   var item1 = {
+   	        itemcode: req.body.itemcode1,
+            amount: req.body.amount1
+   }
+
+   return res.json({msg: 'done' , insertId: result.insertId} )
+
+   //console.log(order);
 });
 
 module.exports = router;

@@ -55,7 +55,7 @@
         dataType: "json",
         success: function(data){
         	if(data.msg === 'done') {
-        		alert(data.msg);
+        		alert(data.insertId);
         		window.location.reload();
         	}
         },

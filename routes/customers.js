@@ -47,7 +47,7 @@ router.post('/', function(req, res) {
    console.log(cus);
 
     customer.addCustomerToShop(req.session.shopId,cus,function(result) {  
-         return res.json({msg: 'done'})
+         return res.json({msg: 'done' , insertId: result.insertId} )
     });
 });
 
