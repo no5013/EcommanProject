@@ -69,13 +69,14 @@ html.app-html
                           th.stat-item-name-cell Item Name
                           th.stat-item-amount-cell Amount
                       tbody
-                        tr
-                          td.stat-item-img-cell
-                            img.responsize-img(src='/images/profilepic.jpg', alt='')
-                          td.stat-item-name-cell
-                            p AAA-12345678
-                            p Momo item
-                          td.stat-item-amount-cell 1
+                        each val in bestSeller
+                          tr
+                            td.stat-item-img-cell
+                              img.responsize-img(src='/images/profilepic.jpg', alt='')
+                            td.stat-item-name-cell
+                              =val.item_name
+                            td.stat-item-amount-cell
+                              =val.amount
                 .card.white.darken-1
                   .card-content.blue-grey-text
                     span.card-title

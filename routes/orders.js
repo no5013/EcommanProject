@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
    }
 
    var orderId;
-   order.addOrderToShop( newO rder , function(result){
+   order.addOrderToShop( newOrder , function(result){
    		orderId = result.insertId;
    });
 
