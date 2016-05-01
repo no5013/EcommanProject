@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="app-html">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ecomman Website</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  />
+    <link type="text/css" rel="stylesheet" href="../public/css/newcss.css"  />
+    <link type="text/css" rel="stylesheet" href="../public/css/styles.css"  />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class="app-body">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../public/js/materialize.min.js"></script>
+    <main>
+      <div class="navbar-fixed navbar-container">
+        <nav class="navbar">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Logo</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="../views/about.html">About</a></li>
+                <li><a href="../views/login.html">Log out</a></li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+      <!-- App menu -->
+      <div class="app-main">
+        <div class="left-nav-wrapper z-depth-1 blue-grey darken-4">
+            <ul class="left-navbar">
+              <div class= "profile-img">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="circle responsize-img"/>
+              </div>
+              <div class="shop-information">
+                <span class="shop-information-text">Cutie Neko shop</span>
+              </div>
+
+              <div class="nav-link-container">
+                  <a href="../views/dashboard.html" class="nav-link link-active">
+                    <i class="material-icons nav-link-icon ">dashboard</i>
+                    <span class="nav-link-text">DASHBOARD</span>
+                  </a>
+                  <a href="../views/statistic.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">equalizer</i>
+                    <span class ="nav-link-text">STATISTIC</span>
+                  </a>
+                  <a href="../views/stock.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">store</i>
+                    <span class="nav-link-text">STOCK</span>
+                  </a>
+                  <a href="../views/order.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">assignment</i>
+                    <span class="nav-link-text">ORDER</span>
+                  </a>
+                  <a href="../views/customer.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">supervisor_account</i>
+                    <span class="nav-link-text">CUSTOMER</span>
+                  </a>
+              </div>
+          </ul>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+          <div class="app-content">
+            <div class="row">
+              <div class="col s12 m9">
+                <div class="card white darken-1">
+                  <div class="card-content blue-grey-text">
+                    <span class="card-title">ORDER</span>
+                    <div class="divider"></div>
+                      <ul class="row">
+                        <li class="col s4">
+                          <div class="card white darken-1">
+                            <div class="card-content blue-grey-text border-green text-center">
+                              <span class="card-title">Ordered</span>
+                              <p style="font-size:30px">10</p>
+                            </div>
+                          </div>
+                      </li>
+                      <li class="col s4">
+                        <div class="card white darken-1">
+                          <div class="card-content blue-grey-text border-yellow text-center">
+                            <span class="card-title">Paid</span>
+                            <p style="font-size:30px">8</p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="col s4">
+                        <div class="card white darken-1">
+                          <div class="card-content blue-grey-text border-blue text-center">
+                            <span class="card-title">Shipped</span>
+                            <p style="font-size:30px">5</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m12">
+              <div class="card white darken-1">
+                <div class="col">
+                  <div class="card-content blue-grey-text">
+                    <span class="card-title">Selling Statistics</span>
+                  </div>
+                </div>
+                <div class="card-content blue-grey-text">
+                  <div class="row">
+                    <div class="col s3">Total Sales xx pieces</div>
+                      <div class="col s3">Total Sales xxxx Baht</div>
+                  </div>
+                  <div id="canvas-holder" style="width:50%">
+                    <canvas id="chart-area" width="300" height="300" />
+                  </div>
+                </div>
+                <div>
+                  <script>
+                    var randomScalingFactor = function() {
+                      return Math.round(Math.random() * 100);
+                    };
+                    var randomColorFactor = function() {
+                      return Math.round(Math.random() * 255);
+                    };
+                    var randomColor = function(opacity) {
+                      return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+                    };
+                    var config = {
+                      type: 'pie',
+                      data: {
+                      datasets: [{
+                        data: [
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                        ],
+                        backgroundColor: [
+                          "#F7464A",
+                          "#46BFBD",
+                          "#FDB45C",
+                          "#949FB1",
+                          "#4D5360",
+                        ],
+                      }, {
+                        data: [
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                        ],
+                        backgroundColor: [
+                          "#F7464A",
+                          "#46BFBD",
+                          "#FDB45C",
+                          "#949FB1",
+                          "#4D5360",
+                        ],
+                      }, {
+                        data: [
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                          randomScalingFactor(),
+                        ],
+                        backgroundColor: [
+                          "#F7464A",
+                          "#46BFBD",
+                          "#FDB45C",
+                          "#949FB1",
+                          "#4D5360",
+                        ],
+                      }],
+                        labels: [
+                          "Red",
+                          "Green",
+                          "Yellow",
+                          "Grey",
+                          "Dark Grey"
+                        ]
+                      },
+                      options: {
+                          responsive: true
+                      }
+                    };
+                      window.onload = function() {
+                          var ctx = document.getElementById("chart-area").getContext("2d");
+                          window.myPie = new Chart(ctx, config);
+                      };
+                      $('#randomizeData').click(function() {
+                          $.each(config.data.datasets, function(i, piece) {
+                              $.each(piece.data, function(j, value) {
+                                  config.data.datasets[i].data[j] = randomScalingFactor();
+                                  //config.data.datasets.backgroundColor[i] = 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
+                              });
+                          });
+                          window.myPie.update();
+                      });
+                      $('#addDataset').click(function() {
+                          var newDataset = {
+                              backgroundColor: [randomColor(0.7), randomColor(0.7), randomColor(0.7), randomColor(0.7), randomColor(0.7)],
+                              data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                          };
+                          config.data.datasets.push(newDataset);
+                          window.myPie.update();
+                      });
+                      $('#removeDataset').click(function() {
+                          config.data.datasets.splice(0, 1);
+                          window.myPie.update();
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      </div>
+    </main>
+  </body>
+</html>

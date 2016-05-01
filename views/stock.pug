@@ -1,0 +1,165 @@
+doctype html
+html.app-html
+  head
+    meta(charset='UTF-8')
+    title Ecomman Website
+    // Import Google Icon Font
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Import materialize.css
+    link(type='text/css', rel='stylesheet', href='/css/materialize.min.css')
+    link(type='text/css', rel='stylesheet', href='/css/newcss.css')
+    // Let browser know website is optimized for mobile
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body.app-body
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='/js/materialize.min.js')
+    script(type='text/javascript', src='/js/app.js')
+    script(type='text/javascript', src='/js/stockJQ.js')
+    main
+      .navbar-fixed.navbar-container
+        nav.navbar
+          .nav-wrapper
+            a.brand-logo(href='#') Logo
+            ul.right.hide-on-med-and-down
+              li
+                a(href='#') About
+              li
+                a(href='#') Log out
+      // App menu
+      .app-main
+        .left-nav-wrapper.z-depth-1.blue-grey.darken-4
+          ul.left-navbar
+            .profile-img
+              img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+            .shop-information
+              span.shop-information-text Cutie Neko shop
+            .nav-link-container
+              a.nav-link(href='#!')
+                i.material-icons.nav-link-icon dashboard
+                span.nav-link-text DASHBOARD
+              a.nav-link(href='#!')
+                i.material-icons.nav-link-icon equalizer
+                span.nav-link-text STATISTIC
+              a.nav-link.link-active(href='/stocks')
+                i.material-icons.nav-link-icon store
+                span.nav-link-text STOCK
+              a.nav-link(href='/orders')
+                i.material-icons.nav-link-icon assignment
+                span.nav-link-text ORDER
+              a.nav-link(href='/customers')
+                i.material-icons.nav-link-icon supervisor_account
+                span.nav-link-text CUSTOMER
+        // Main Content
+        main
+          .app-content
+            // write code here
+            // example <p>asdasdasdasdsad</p>
+            .body-container.z-depth-1
+              .add-button-item
+                a.waves-effect.waves-light.btn.modal-trigger(href='#addbutton')
+                  i.material-icons.left library_add
+                  span.body-button Add item
+              .row
+                // create a item card
+                each item,index in stocks
+                  .col.l2
+                    .card.item-content-cell
+                      .card-image.waves-effect.waves-block.waves-light
+                        img.activator(src='/images/profilepic.jpg')
+                      .card-content
+                        span.card-title.activator.grey-text.text-darken-4
+                          =item.item_name
+                          i.material-icons.right more_vert
+                        .row
+                          a.waves-effect.waves-light.btn.modal-trigger(href='#editbutton')
+                            i.material-icons.left mode_edit
+                            span.body-button Edit
+                      .card-reveal
+                        span.card-title.grey-text.text-darken-4
+                          =item.item_name
+                          i.material-icons.right close
+                        p
+                          | item code :
+                          span(style='color:grey') 
+                          =item.item_code
+                        p
+                          | price :
+                          span(style='color:grey') 
+                          =item.item_price
+                        p
+                          | weight :
+                          span(style='color:grey') 
+                          =item.item_weight
+                        p
+                          | stock :
+                          span(style='color:grey') infinity
+                        p
+                          | description :
+                          span(style='color:grey') 
+                          =item.item_desc
+                        a.waves-effect.waves-light.btn.right Delete
+                // Modal Edit button
+                #editbutton.modal.modal-fixed-footer
+                  .modal-content
+                    h4 Topic
+                    .row
+                      .col.l6.item-img
+                        img(src='/images/profilepic.jpg')
+                      .col.l6
+                        .row
+                          .input-field
+                            input#serial.validate(type='text')
+                            label(for='serial') Item Serial
+                        .row
+                          .input-field
+                            input#item-name.validate(type='text')
+                            label(for='item-name') Item Name
+                        .row
+                          .input-field
+                            input#item-price.validate(type='text')
+                            label(for='item-price') price
+                        .row
+                          .input-field
+                            input#item-weight.validate(type='text')
+                            label(for='weight') weight
+                    .row
+                      .input-field
+                        textarea#item-desc.validate(type='text')
+                        label(for='item-desc') Description
+                  .modal-footer
+                    a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') save
+                    a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') cancel
+                // Modal Add button
+
+                #addbutton.modal.modal-fixed-footer
+                  form.col.s12#add-item-form
+                    .modal-content
+                      h4 Topic
+                      .row
+                        .col.l6.item-img
+                          img(src='/images/profilepic.jpg')
+                        .col.l6
+                          .row
+                            .input-field
+                              input#new-item-code.validate(type='text')
+                              label(for='new-item-code') Item Serial
+                          .row
+                            .input-field
+                              input#new-item-name.validate(type='text')
+                              label(for='new-item-name') Item Name
+                          .row
+                            .input-field
+                              input#new-item-price.validate(type='text')
+                              label(for='new-item-price') price
+                          .row
+                            .input-field
+                              input#new-item-weight.validate(type='text')
+                              label(for='new-item-weight') weight
+                      .row
+                        .input-field
+                          textarea#new-item-desc.validate(type='text')
+                          label(for='new-item-desc') Description
+                    .modal-footer
+                      input(type='submit', value='save', class='btn waves-effect waves-light')
+                      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') cancel

@@ -1,0 +1,185 @@
+doctype html
+html.app-html
+  head
+    meta(charset='UTF-8')
+    title Ecomman Website
+    // Import Google Icon Font
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Import materialize.css
+    link(type='text/css', rel='stylesheet', href='/css/materialize.min.css')
+    link(type='text/css', rel='stylesheet', href='/css/newcss.css')
+    // Let browser know website is optimized for mobile
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body.app-body
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='/js/materialize.min.js')
+    script(type='text/javascript', src='/js/app.js')
+    script(type='text/javascript', src='/js/customerJQ.js')
+    main
+      .navbar-fixed.navbar-container
+        nav.navbar
+          .nav-wrapper
+            a.brand-logo(href='#') Logo
+            ul.right.hide-on-med-and-down
+              li
+                a(href='#') About
+              li
+                a(href='#') Log out
+      // App menu
+      .app-main
+        .left-nav-wrapper.z-depth-1.blue-grey.darken-4
+          ul.left-navbar
+            .profile-img
+              img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+            .shop-information
+              span.shop-information-text Cutie Neko shop
+            .nav-link-container
+              a.nav-link(href='#!')
+                i.material-icons.nav-link-icon dashboard
+                span.nav-link-text DASHBOARD
+              a.nav-link(href='#!')
+                i.material-icons.nav-link-icon equalizer
+                span.nav-link-text STATISTIC
+              a.nav-link(href='/stocks')
+                i.material-icons.nav-link-icon store
+                span.nav-link-text STOCK
+              a.nav-link(href='/orders')
+                i.material-icons.nav-link-icon assignment
+                span.nav-link-text ORDER
+              a.nav-link.link-active(href='/customers')
+                i.material-icons.nav-link-icon supervisor_account
+                span.nav-link-text CUSTOMER
+        // Main Content
+        main
+          .app-content
+            // write code here
+            .body-container.z-depth-1
+              .head-bar
+                .add-button-item.head-bar-button
+                  a.waves-effect.waves-light.btn.modal-trigger(href='#addCus')
+                    i.material-icons.left library_add
+                    span.body-button Add Customer
+                .search-wrapper.head-bar-search
+                  .head-bar-search-tb.card
+                    i.material-icons.head-bar-search-icon search
+                    input#search.head-bar-search-text
+            .body-container.z-depth-1
+              table
+                thead
+                  tr
+                    th.cus-img-cell
+                    th.cus-name-cell Name
+                    th.cus-addr-cell Address
+                    th.cus-numOrder-cell Number of Order
+                    th.cus-button-cell
+                tbody
+                  each cus ,index in customers
+                    tr
+                      td.cus-img-cell
+                        img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+                      td.cus-name-cell
+                        =cus.cus_name
+                      td.cus-addr-cell 
+                        =cus.cus_address
+                      td.cus-numOrder-cell
+                        if cus.num_bill
+                          =cus.num_bill
+                        else 
+                          =0
+                      td.cus-button-cell
+                        a.waves-effect.waves-light.btn.modal-trigger(href='#listOrder')
+                          i.material-icons.left library_books
+                          | order
+                        a.waves-effect.waves-light.btn.modal-trigger(href='#editCus')
+                          i.material-icons.left mode_edit
+                          | profile
+            // Modal add customer button
+            #addCus.modal.modal-fixed-footer
+              form.col.s12#add-customer-form
+                .modal-content
+                  h4 Add Customer
+                  .cus-add-tb
+                    .row
+                      .cus-add-img-cell.col.l4
+                        img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+                      .cus-add-info-cell.col.l8
+                        .row
+                          .input-field
+                            input#new-cus-name.validate(type='text')
+                            label(for='new-cus-name') Facebook Name
+                        .row
+                          .input-field
+                            input#new-cus-face.validate(type='text')
+                            label(for='new-cus-face') Facebook Link
+                    .row
+                      h4 Shipping Information
+                      .row
+                        .input-field
+                          input#new-ship-name.validate(type='text')
+                          label(for='new-ship-name') Customer Name
+                      .row
+                        .input-field
+                          input#new-cus-email.validate(type='text')
+                          label(for='new-cus-email') E-mail
+                      .row
+                        .input-field
+                          input#new-cus-addr.validate(type='text')
+                          label(for='new-cus-addr') Address
+                .modal-footer
+                  input(type='submit', value='save', class='btn waves-effect waves-light')
+                  a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') cancel
+            // Modal edit customer button
+            #editCus.modal.modal-fixed-footer
+              .modal-content
+                h4 Edit Customer
+                .cus-add-tb
+                  .row
+                    .cus-add-img-cell.col.l4
+                      img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+                    .cus-add-info-cell.col.l8
+                      .row
+                        .input-field
+                          input#customer-name.validate(type='text')
+                          label(for='customer-name') Facebook Name
+                      .row
+                        .input-field
+                          input#facebook-link.validate(type='text')
+                          label(for='facebook-link') Facebook Link
+                  .row
+                    h4 Shipping Information
+                    .row
+                      .input-field
+                        input#customer-name.validate(type='text')
+                        label(for='customer-name') Customer Name
+                    .row
+                      .input-field
+                        input#cus-email.validate(type='text')
+                        label(for='cus-email') E-mail
+                    .row
+                      .input-field
+                        input#cus-addr.validate(type='text')
+                        label(for='cus-addr') Address
+              .modal-footer
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') save
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') cancel
+            // Modal list order of each customer
+            #listOrder.modal.modal-fixed-footer
+              .modal-content
+                h4 List Order
+                table
+                  thead
+                    tr
+                      th.order-id-cell Order ID
+                      th.order-date-cell Date
+                      th.order-status-cell status
+                      th.order-totalmoney-cell Total money
+                  tbody
+                    tr
+                      td AA-123456
+                      td 29/4/2559
+                      td paid
+                      td $100.00
+              .modal-footer
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') OK
+            // end of Modal

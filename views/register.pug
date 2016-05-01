@@ -1,0 +1,39 @@
+doctype html
+html.app-html.layout-form
+  head
+    meta(charset='UTF-8')
+    title Ecomman Website
+    // Import Google Icon Font
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Import materialize.css
+    link(type='text/css', rel='stylesheet', href='css/materialize.min.css')
+    link(type='text/css', rel='stylesheet', href='css/newcss.css')
+    // Let browser know website is optimized for mobile
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='js/materialize.min.js')
+    // Script for Login Page.
+    //script(type='text/javascript', src='js/login.js')
+
+    main
+      .card-panel.teal.white.auth-form-container
+        .row
+          span.error-message
+          form.col.s12#login-form
+            .row
+              .input-field.col.s8
+                p
+                  strong
+                    center Register
+            .row
+              .input-field.col.s12
+                input#username.validate(type='text')
+                label(for='username') username
+            .row
+              .input-field.col.s12
+                input#password.validate(type='password')
+                label(for='password') Password
+            input(type='submit', value='Login', class='btn btn-login')
+            a.waves-effect.waves-light.btn regis

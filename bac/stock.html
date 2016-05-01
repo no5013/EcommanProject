@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="app-html">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ecomman Website</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  />
+    <link type="text/css" rel="stylesheet" href="../public/css/newcss.css"  />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class="app-body">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../public/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../public/js/app.js"></script>
+
+    <main>
+      <div class="navbar-fixed navbar-container">
+        <nav class="navbar">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Logo</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Log out</a></li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+      <!-- App menu -->
+      <div class="app-main">
+        <div class="left-nav-wrapper z-depth-1 blue-grey darken-4">
+            <ul class="left-navbar">
+              <div class= "profile-img">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="circle responsize-img"/>
+              </div>
+              <div class="shop-information">
+                <span class="shop-information-text">Cutie Neko shop</span>
+              </div>
+
+              <div class="nav-link-container">
+                  <a href="#!" class="nav-link">
+                    <i class="material-icons nav-link-icon">dashboard</i>
+                    <span class="nav-link-text">DASHBOARD</span>
+                  </a>
+                  <a href="#!" class="nav-link">
+                    <i class="material-icons nav-link-icon">equalizer</i>
+                    <span class ="nav-link-text">STATISTIC</span>
+                  </a>
+                  <a href="../views/stock.html" class="nav-link link-active">
+                    <i class="material-icons nav-link-icon">store</i>
+                    <span class="nav-link-text">STOCK</span>
+                  </a>
+                  <a href="../views/order.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">assignment</i>
+                    <span class="nav-link-text">ORDER</span>
+                  </a>
+                  <a href="../views/customer.html" class="nav-link">
+                    <i class="material-icons nav-link-icon">supervisor_account</i>
+                    <span class="nav-link-text">CUSTOMER</span>
+                  </a>
+              </div>
+          </ul>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+          <div class="app-content">
+            <!-- write code here -->
+            <div class="body-container z-depth-1">
+              <div class = "head-bar">
+                <div class="add-button-item">
+                  <a href="#addbutton" class="waves-effect waves-light btn modal-trigger">
+                    <i class="material-icons left">library_add</i>
+                    <span class="body-button">Add item</span>
+                  </a>
+                </div>
+                <div class="search-wrapper head-bar-search">
+                  <div class="head-bar-search-tb card">
+                    <i class="material-icons head-bar-search-icon">search</i>
+                    <input id="search" class="head-bar-search-text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="body-container z-depth-1">
+              <div class="row">
+                <div class="col l2">
+                  <div class="card item-content-cell">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="../public/images/profilepic.jpg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                      <div class="row">
+                        <a href="#editbutton" class="waves-effect waves-light btn modal-trigger">
+                          <i class="material-icons left">mode_edit</i>
+                          <span class="body-button">Edit</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                      <p>item serial : <span style="color:grey">AAA-123</span></p>
+                      <p>name : <span style="color:grey">item name</span></p>
+                      <p>price : <span style="color:grey">$100.00</span></p>
+                      <p>weight : <span style="color:grey">0.05 kg</span></p>
+                      <p>stock : <span style="color:grey">infinity </span></p>
+                      <p>description : <span style="color:grey">a little cat </span></p>
+                      <a class="waves-effect waves-light btn right">Delete</a>
+                    </div>
+                    <div class=""
+                  </div></div>
+                </div>
+
+              <!-- Modal Edit button -->
+              <div id="editbutton" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                  <h4>Topic</h4>
+                  <div class="row">
+                    <div class="col l6 item-img">
+                      <img src = "../public/images/profilepic.jpg"></img>
+                    </div>
+                    <div class="col l6">
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="serial" type="text" class="validate"></input>
+                          <label for="serial">Item Serial</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="item-name" type="text" class="validate"></input>
+                          <label for="item-name">Item Name</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="item-price" type="text" class="validate"></input>
+                          <label for="item-price">price</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="weight" type="text" class="validate"></input>
+                          <label for="weight">weight</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="input-field">
+                        <textarea id="item-desc" type="text" class="validate"></textarea>
+                        <label for="item-desc">Description</label>
+                      </div>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">save</a>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">cancel</a>
+                </div>
+              </div>
+              <!-- Modal Add button -->
+              <div id="addbutton" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                  <h4>Topic</h4>
+                  <div class="row">
+                    <div class="col l6 item-img">
+                      <img src = "../public/images/profilepic.jpg"></img>
+                    </div>
+                    <div class="col l6">
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="serial" type="text" class="validate"></input>
+                          <label for="serial">Item Serial</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="item-name" type="text" class="validate"></input>
+                          <label for="item-name">Item Name</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="item-price" type="text" class="validate"></input>
+                          <label for="item-price">price</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field">
+                          <input id="weight" type="text" class="validate"></input>
+                          <label for="weight">weight</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="input-field">
+                        <textarea id="item-desc" type="text" class="validate"></textarea>
+                        <label for="item-desc">Description</label>
+                      </div>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">save</a>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </main>
+  </body>
+</html>
