@@ -30,7 +30,7 @@
 // });
 
  $(function() {
-	$( "#add-item-form" ).submit(function( event ) {
+	$( "#add-order-form" ).submit(function( event ) {
 	  event.preventDefault();
 
 	  var name = $('#new-item-name').val();

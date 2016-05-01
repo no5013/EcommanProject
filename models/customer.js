@@ -37,6 +37,15 @@ function Customer() {
             });
         });
     }
+
+    this.getCustomer = function(shopId){
+        connection.acquire(function(err, con) {
+                con.query('SELECT customer.cus_id , customer.cus_name FROM customer', function(err, result) {
+                con.release();
+                callback(result);
+            });
+        });
+    }
 }
 
 module.exports = new Customer();

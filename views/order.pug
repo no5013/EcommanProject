@@ -6,8 +6,8 @@ html.app-html
     // Import Google Icon Font
     link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     // Import materialize.css
-    link(type='text/css', rel='stylesheet', href='/css/materialize.min.css')
-    link(type='text/css', rel='stylesheet', href='/css/newcss.css')
+    link(type='text/css', rel='stylesheet', href='../public/css/materialize.min.css')
+    link(type='text/css', rel='stylesheet', href='../public/css/newcss.css')
     // Let browser know website is optimized for mobile
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
   body.app-body
@@ -15,6 +15,8 @@ html.app-html
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')
     script(type='text/javascript', src='/js/app.js')
+    script(type='text/javascript', src='/js/orderJQ.js')
+
     main
       .navbar-fixed.navbar-container
         nav.navbar
@@ -30,7 +32,7 @@ html.app-html
         .left-nav-wrapper.z-depth-1.blue-grey.darken-4
           ul.left-navbar
             .profile-img
-              img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
+              img.circle.responsize-img(src='../public/images/profilepic.jpg', alt='')
             .shop-information
               span.shop-information-text Cutie Neko shop
             .nav-link-container
@@ -74,7 +76,6 @@ html.app-html
                         a(href='#paid') Paid
                       li.tab.col.s3
                         a(href='#shipped') Shipped
-                  
                   #ordered.col.s12
                     table.order-info-tb
                       thead.green.lighten-4
@@ -86,16 +87,16 @@ html.app-html
                           th.order-status-cell Status
                           th.order-button-cell
                       tbody
-                        each order in orders
-                          if order.order_status == "ordered"
-                            tr
+                        tr
+                          each order in orders
+                            if order.order_status == "ordered"
                               td.order-id-cell
                                 a.modal-trigger(href='#orderedInfo')
-                                  span.order-link-text 
-                                   =order.order_id
+                                  span.order-link-text
+                                    =order.order_id
                               td.order-cus-name-cell
-                                span.order-link-text 
-                                 =order.cus_name
+                                span.order-link-text
+                                  =order.cus_name
                               td.order-date-cell
                                 =order.order_date
                               td.order-totalMoney-cell
@@ -107,10 +108,10 @@ html.app-html
                                     option(value='1') Ordered
                                     option(value='1') Paid
                                     option(value='2') Shipped
-                              td.order-button-cell
-                                a.waves-effect.waves-light.btn
-                                  i.material-icons.left delete
-                                  | Delete
+                          //
+                            <td class="order-button-cell">
+                            <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+                            </td>
                   #paid.col.s12
                     table.order-info-tb
                       thead.lime.lighten-4
@@ -122,16 +123,20 @@ html.app-html
                           th.order-status-cell Status
                           th.order-button-cell
                       tbody
-                        each order in orders
-                          if order.order_status == "paid"
-                            tr
+                        tr
+                          each order in orders
+                            if order.order_status == "paid"
                               td.order-id-cell
                                 a.modal-trigger(href='#orderedInfo')
-                                  span.order-link-text AAA-12345678
+                                  span.order-link-text
+                                    =order.order_id
                               td.order-cus-name-cell
-                                span.order-link-text Momo mimi
-                              td.order-date-cell 29/4/2559
-                              td.order-totalMoney-cell $560.00
+                                span.order-link-text
+                                  =order.cus_name
+                              td.order-date-cell
+                                =order.order_date
+                              td.order-totalMoney-cell
+                                =order.grand_price
                               td.order-status-cell
                                 .input-field.col.s12
                                   select
@@ -139,10 +144,10 @@ html.app-html
                                     option(value='1') Ordered
                                     option(value='1') Paid
                                     option(value='2') Shipped
-                              td.order-button-cell
-                                a.waves-effect.waves-light.btn
-                                  i.material-icons.left delete
-                                  | Delete
+                          //
+                            <td class="order-button-cell">
+                            <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+                            </td>
                   #shipped.col.s12
                     table.order-info-tb
                       thead.light-blue.lighten-4
@@ -154,28 +159,31 @@ html.app-html
                           th.order-status-cell Status
                           th.order-button-cell
                       tbody
-
-                      each order in orders
-                        if order.order_status == "shipped"
-                          tr
-                            td.order-id-cell
-                              a.modal-trigger(href='#orderedInfo')
-                                span.order-link-text AAA-12345678
-                            td.order-cus-name-cell
-                              span.order-link-text Momo mimi
-                            td.order-date-cell 29/4/2559
-                            td.order-totalMoney-cell $560.00
-                            td.order-status-cell
-                              .input-field.col.s12
-                                select
-                                  option(value='', disabled='', selected='') Shipped
-                                  option(value='1') Ordered
-                                  option(value='1') Paid
-                                  option(value='2') Shipped
-                            td.order-button-cell
-                              a.waves-effect.waves-light.btn
-                                i.material-icons.left delete
-                                | Delete
+                        tr
+                          each order in orders
+                            if order.order_status == "shipped"
+                              td.order-id-cell
+                                a.modal-trigger(href='#orderedInfo')
+                                  span.order-link-text
+                                    =order.order_id
+                              td.order-cus-name-cell
+                                span.order-link-text
+                                  =order.cus_name
+                              td.order-date-cell 
+                                =order.order_date
+                              td.order-totalMoney-cell 
+                                =order.grand_price
+                              td.order-status-cell
+                                .input-field.col.s12
+                                  select
+                                    option(value='', disabled='', selected='') Shipped
+                                    option(value='1') Ordered
+                                    option(value='1') Paid
+                                    option(value='2') Shipped
+                          //
+                            <td class="order-button-cell">
+                            <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+                            </td>
               // dddddd
               // Modal Structure
               #orderedInfo.modal.modal-fixed-footer
@@ -191,7 +199,7 @@ html.app-html
                     tbody
                       tr
                         td.item-img-cell
-                          img.responsize-img(src='/images/profilepic.jpg', alt='')
+                          img.responsize-img(src='../public/images/profilepic.jpg', alt='')
                         td.cus-name-cell
                           p AAA-12345678
                           p Momo item
@@ -210,87 +218,189 @@ html.app-html
                   a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') OK
               // end of modal
               // Modal add order
-              #addOrder.modal.modal-fixed-footer
-                .modal-content
-                  .add-order-head
-                    .add-order-icon-cell
-                      a.modal-trigger.add-order-icon-cell(href='#cuslist')
-                        img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
-                    .add-order-info-cell
-                      p Name
-                      p Order code
-                    .add-order-right-cell
-                      p
-                        | Date : 
-                        span 1/5/2559
-                      a.waves-effect.waves-light.btn.modal-trigger(href='#itemlist')
-                        i.material-icons.left shopping_cart
-                        span Add item
-                  table
-                    thead.cyan.lighten-4
-                      tr
-                        th.item-order-img-cell pic
-                        th.item-order-name-cell Item code
-                        th.item-order-amount-cell Amount
-                        th.item-order-price-cell price
-                        th.item-order-delbutton-cell
-                    tbody
-                      tr
-                        td.item-order-img-cell
-                          img.responsize-img(src='/images/profilepic.jpg', alt='')
-                        td.item-order-name-cell AAA-123456
-                        td.item-order-amount-cell 1
-                        td.item-order-price-cell $250.00
-                        td.item-order-delbutton-cell
-                          a.waves-effect.waves-light.btn.modal-trigger(href='#')
-                            i.material-icons.left library_books
-                            | DELETE
-                .modal-footer
-                  .row
-                    .add-order-footer
-                      .add-order-shipping
-                        .input-field.col.l4
-                          input#shipping_cost.validate(type='text')
-                          label(for='shipping_cost') Shiping Cost
-                      .add-order-discount
-                        .input-field.col.l4
-                          input#discount.validate(type='text')
-                          label(for='discount') Discount
-                      .add-order-income
-                        .input-field.col.l4
-                          input#total_money.validate(type='text')
-                          label(for='total_money') Total Money
-                  a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Save
-                  a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Cancel
-              // end of madal
-              // Modal add customer to order
-              #cuslist.modal.modal-fixed-footer
-                .modal-content
-                  h4 Select Customer
-                  .collection
-                    a.collection-item.cus-list-tb(href='#!')
-                      .cus-list-icon
-                        img.circle.responsize-img(src='/images/profilepic.jpg', alt='')
-                      .cus-list-text
-                        p Momo mingming
-                .modal-footer
-                  a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Save
-              // end of madal
-              // Modal add item to order
-              #itemlist.modal.modal-fixed-footer
-                .modal-content
-                  h4 Select Item
-                  ul.collection
-                    li.collection-item.item-list-tb
-                      .item-list-icon
-                        img.responsize-img(src='/images/profilepic.jpg', alt='')
-                      .item-list-text
-                        p AAA-1234567
-                      .item-list-price
-                        p $25550.00
-                      .item-list-button
-                        a.waves-effect.waves-light.btn
-                          i.material-icons.left done
-                          span Select
-                .modal-footer
-                  a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') OK
+              form.col.s12#add-order-form
+                #addOrder.modal.modal-fixed-footer
+                  .modal-content
+                    .row
+                      form.col.s12
+                        .row
+                          .input-field.col.s12
+                            input#cusname.validate(type='text')
+                            label(for='new-cusname') Customer Name
+                        .divider
+                        .row
+                          .input-field.col.s8
+                            input#itemcode1.validate(type='text')
+                            label(for='itemcode1') Item code
+                          .input-field.col.s4
+                            input#amount1.validate(type='text')
+                            label(for='amount1') Amount
+                        .row
+                          .input-field.col.s8
+                            input#itemcode2.validate(type='text')
+                            label(for='itemcode2') Item code
+                          .input-field.col.s4
+                            input#amount2.validate(type='text')
+                            label(for='amount2') Amount
+                        .row
+                          .input-field.col.s8
+                            input#itemcode3.validate(type='text')
+                            label(for='itemcode3') Item code
+                          .input-field.col.s4
+                            input#amount3.validate(type='text')
+                            label(for='amount3') Amount
+                        .row
+                          .input-field.col.s8
+                            input#itemcode4.validate(type='text')
+                            label(for='itemcode4') Item code
+                          .input-field.col.s4
+                            input#amount4.validate(type='text')
+                            label(for='amount4') Amount
+                        .row
+                          .input-field.col.s8
+                            input#itemcode5.validate(type='text')
+                            label(for='itemcode5') Item code
+                          .input-field.col.s4
+                            input#amount5.validate(type='text')
+                            label(for='amount5') Amount
+                  .modal-footer
+                    .row
+                      .add-order-footer
+                        .add-order-shipping
+                          .input-field.col.l6
+                            input#shipping-cost.validate(type='text')
+                            label(for='shipping_cost') Shiping Cost
+                        .add-order-discount
+                          .input-field.col.l6
+                            input#discount.validate(type='text')
+                            label(for='discount') Discount
+                    input(type='submit', value='save', class='btn waves-effect waves-light')
+                    a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Cancel
+                // end of madal
+                // end of madal
+                // Modal add order
+                //
+                  <div id="addOrder" class="modal modal-fixed-footer">
+                  <div class="modal-content">
+                  <div class="add-order-head">
+                  <div class="add-order-icon-cell">
+                  <a href="#cuslist" class="modal-trigger add-order-icon-cell">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="circle responsize-img"/>
+                  </a>
+                  </div>
+                  <div class="add-order-info-cell">
+                  <p>Name</p>
+                  <p>Order code</p>
+                  </div>
+                  <div class="add-order-right-cell">
+                  <p>Date : <span>1/5/2559</span></p>
+                  <a href="#itemlist" class="waves-effect waves-light btn modal-trigger">
+                  <i class="material-icons left">shopping_cart</i>
+                  <span>Add item</span>
+                  </a>
+                  </div>
+                  </div>
+                  <table>
+                  <thead class="cyan lighten-4">
+                  <tr>
+                  <th class="item-order-img-cell">pic</th>
+                  <th class="item-order-name-cell" >Item code</th>
+                  <th class="item-order-amount-cell">Amount</th>
+                  <th class="item-order-price-cell">price</th>
+                  <th class="item-order-delbutton-cell"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <td class="item-order-img-cell">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="responsize-img"/>
+                  </td>
+                  <td class="item-order-name-cell" >AAA-123456</td>
+                  <td class="item-order-amount-cell">1</td>
+                  <td class="item-order-price-cell">$250.00</td>
+                  <td class="item-order-delbutton-cell">
+                  <a href="#" class="waves-effect waves-light btn modal-trigger"><i class="material-icons left">library_books</i>DELETE</a>
+                  </td>
+                  </tr>
+                  </tbody>
+                  </table>
+                  </div>
+                  <div class="modal-footer">
+                  <div class="row">
+                  <div class="add-order-footer">
+                  <div class="add-order-shipping">
+                  <div class="input-field col l4">
+                  <input id="shipping_cost" type="text" class="validate">
+                  <label for="shipping_cost">Shiping Cost</label>
+                  </div>
+                  </div>
+                  <div class="add-order-discount">
+                  <div class="input-field col l4">
+                  <input id="discount" type="text" class="validate">
+                  <label for="discount">Discount</label>
+                  </div>
+                  </div>
+                  <div class="add-order-income">
+                  <div class="input-field col l4">
+                  <input id="total_money" type="text" class="validate">
+                  <label for="total_money">Total Money</label>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Save</a>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+                  </div>
+                  </div>
+                // end of madal
+                // Modal add customer to order
+                //
+                  <div id="cuslist" class="modal modal-fixed-footer">
+                  <div class="modal-content">
+                  <h4>Select Customer</h4>
+                  <div class="collection">
+                  <a href="#!" class="collection-item cus-list-tb">
+                  <div class="cus-list-icon">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="circle responsize-img"/>
+                  </div>
+                  <div class="cus-list-text">
+                  <p>Momo mingming</p>
+                  </div>
+                  </a>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Save</a>
+                  </div>
+                  </div>
+                // end of madal
+                // Modal add item to order
+                //
+                  <div id="itemlist" class="modal modal-fixed-footer">
+                  <div class="modal-content">
+                  <h4>Select Item</h4>
+                  <ul class="collection">
+                  <li class="collection-item item-list-tb">
+                  <div class="item-list-icon">
+                  <img src = "../public/images/profilepic.jpg" alt="" class="responsize-img"/>
+                  </div>
+                  <div class="item-list-text">
+                  <p>AAA-1234567</p>
+                  </div>
+                  <div class="item-list-price">
+                  <p>$25550.00</p>
+                  </div>
+                  <div class="item-list-button">
+                  <a class="waves-effect waves-light btn">
+                  <i class="material-icons left">done</i>
+                  <span>Select</span>
+                  </a>
+                  </div>
+                  </li>
+                  </ul>
+                  </div>
+                  <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+                  </div>
+                  </div>
+                // end of madal

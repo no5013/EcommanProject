@@ -8,14 +8,21 @@ router.get('/', function(req, res) {
          return res.redirect('/login')
     } else {
          order.getOrdersFromShopId(req.session.shopId,function(result){
-         	console.log(result);
-          	return res.render('order', {orders: result , orderss: result});
+         	return res.render('order', {orders: result , orderss: result});
          });
     }
 });
 
-router.get('/:id', function(req, res) {
+router.post('/', function(req, res) {
+	var  order = {
+            cusName: req.body.cusName,
+            shipCost: req.body.shipCost,
+            discount: req.body.discount,
+            itemcode1: req.body.itemcode1,
+            amount1: req.body.amount1
+   }
 
+   console.log(order);
 });
 
 module.exports = router;
