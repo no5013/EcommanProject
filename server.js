@@ -8,6 +8,8 @@ var session = require('express-session');
 
 //Import from routes folder
 var routes = require('./routes/index');
+var dashboards = require('./routes/dashboards');
+var statistics = require('./routes/statistics');
 var users = require('./routes/users');
 var stocks = require('./routes/stocks');
 var customers = require('./routes/customers');
@@ -34,10 +36,13 @@ connection.init();
 
 //Init Routes
 app.use('/', routes);
+app.use('/dashboards' , dashboards);
+app.use('/statistics', statistics);
 app.use('/users', users);
 app.use('/stocks', stocks);
 app.use('/customers', customers);
 app.use('/orders' , orders);
+
 
 var server = app.listen(4000, function() {
     console.log('Server listening on port ' + server.address().port);

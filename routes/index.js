@@ -7,14 +7,14 @@ router.get('/', function(req, res) {
 	if(!req.session.username) {
 		return res.redirect('login');
 	}
-	return res.render('main');
+	return res.render('dashboard');
 });
 
 router.get('/login', function(req, res) {
 	if(!req.session.username) {
 		return res.render('login');
 	}
-	return res.redirect('/');
+	return res.redirect('dashboard');
 });
 
 router.post('/login', function(req,res) {

@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
     } else {
          order.getOrdersFromShopId(req.session.shopId,function(result){
          	console.log(result);
-          	return res.render('order', {orders: result});
+          	return res.render('order', {orders: result , orderss: result});
          });
     }
 });
