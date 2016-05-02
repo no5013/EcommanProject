@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-var order = require('../models/order');
+var dashboard = require('../models/dashboard');
 
 router.get('/', function(req, res) {
     if(!req.session.username) {
          return res.redirect('/login')
     } else {
-    	
-         return res.render('dashboard');
+    	// dashboard.get(function(result){
+    	// 	console.log(result);
+    	// 	
+    	// });
+         return res.render('dashboard');	
     }
 });
 

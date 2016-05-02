@@ -1,0 +1,18 @@
+.border-blue{
+	border-left: 25px solid #82CAFF;
+}
+.border-yellow{
+	border-left: 25px solid #FCD74A;
+}
+.border-green{
+	border-left: 25px solid #93CE34;
+}
+.text-center{
+	text-align: center;
+}
+.right-drop{
+	margin-left: 1100px;
+}
+.divider2{
+	margin-top:10px;
+}
